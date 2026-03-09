@@ -1,8 +1,10 @@
+
+
 <template>
-    <v-app>
+    <v-app style="background-color: #ADD8E6">
         <v-main>
             <div class="text-center pa-4">
-                <v-btn text="Add +" @click="dialog = true"></v-btn>
+                <v-btn text="Add +" @click="dialog = true" color="white"></v-btn>
                 <v-dialog v-model="dialog" max-width="680" max-height="400" persistent>
                     <v-card title="Add Question" theme="light">
                         <v-btn class="ms-auto my-1" text="Close" @click="dialog2 = true"></v-btn>
@@ -32,7 +34,7 @@
 <script setup>
 
 import { ref } from 'vue'
-import AddQuestion from './component/AddQuestion.vue'
+import AddQuestion from './component/addQuestion.vue'
 
 const dialog = ref(false)
 const dialog2 = ref(false)

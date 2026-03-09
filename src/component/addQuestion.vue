@@ -25,13 +25,7 @@ import QuestionContent from './QuestionContent.vue'
 
 const questionTypes = ['Input', 'Radio Button','Dropdown', 'Checkbox', 'Conditional']
 
-const createNewQuestion = () => ({
-    type: '',
-    internalTitle: '',
-    title: '',
-    text: '',
-    buttonText: ''
-})
+const createNewQuestion = () => ({ type: '', internalTitle: '', title: '', text: '', buttonText: '' })
 
 const questions = ref([createNewQuestion()])
 const openedPanel = ref(0)
