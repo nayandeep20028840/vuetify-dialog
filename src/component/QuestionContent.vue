@@ -55,7 +55,7 @@
 
         <div v-else-if="question.type === 'Conditional'">
             <v-container>
-                <v-text-field label="Conditional"></v-text-field>
+                <add-question />
             </v-container>
         </div>
 
@@ -67,6 +67,7 @@
 <script setup>
 
 import { ref, defineProps } from 'vue'
+import AddQuestion from './AddQuestion.vue';
 
 const inputQuestionTypes = ['Text', 'Phone', 'Email', 'Date']
 const inputQuestions = ref([{ type: '' }])

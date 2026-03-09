@@ -1,5 +1,3 @@
-
-
 <template>
     <v-app>
         <v-main>
@@ -9,7 +7,7 @@
                     <v-card title="Add Question" theme="light">
                         <v-btn class="ms-auto my-1" text="Close" @click="dialog2 = true"></v-btn>
                         <v-container>
-                            <QuestionForm ref="questionFormRef" />
+                            <AddQuestion ref="questionFormRef" />
                         </v-container>
                         <v-card-actions>
                             <v-btn text="+ Add new" @click="questionFormRef?.addQuestion()"></v-btn>
@@ -34,7 +32,7 @@
 <script setup>
 
 import { ref } from 'vue'
-import QuestionForm from './component/addQuestion.vue'
+import AddQuestion from './component/AddQuestion.vue'
 
 const dialog = ref(false)
 const dialog2 = ref(false)
