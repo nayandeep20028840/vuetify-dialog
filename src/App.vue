@@ -34,7 +34,7 @@
 <script setup>
 
 import { ref } from 'vue'
-import AddQuestion from './component/addQuestion.vue'
+import AddQuestion from './component/AddQuestion.vue'
 
 const dialog = ref(false)
 const dialog2 = ref(false)
@@ -43,13 +43,14 @@ const questionFormRef = ref(null)
 const saveData = () => {
     console.log("Component Ref:", questionFormRef.value);
     const dataToSave = questionFormRef.value?.questions;
+    console.log("HEY THERE .........", questionFormRef.value.input5) // coming undefined 
 
     if (dataToSave) {
-        const jsonOutput = JSON.stringify(dataToSave, null, 2);
+        const jsonOutput = JSON.stringify(dataToSave, 2);
 
         console.log("Saved Data:", jsonOutput);
 
-        dialog.value = false;
+        // dialog.value = false;
     }
 }
 

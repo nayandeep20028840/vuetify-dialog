@@ -4,7 +4,7 @@
         <div v-if="question.type === 'Input'">
             <v-container>
                 <v-expansion-panels>
-                    <v-expansion-panel v-for="(item, index) in inputQuestions" :key="index"
+                    <v-expansion-panel v-for="(item, index) in inputQ" :key="index"
                         :title="'Input Field ' + (index + 1)">
                         <v-expansion-panel-text>
                             <v-container>
@@ -87,9 +87,10 @@
         <div v-else-if="question.type === 'Conditional'">
             <v-container>
                 <v-expansion-panels>
-                    <v-expansion-panel>
+                    <v-expansion-panel v-for="(item, index) in conditional" :key="index"
+                        :title="'Input Field ' + (index + 1)">
                         <v-expansion-panel-text>
-                            <add-question />
+                            <add-question/>
                             <v-card-actions>
                                 <v-btn variant="text" color="primary" @click="addConditional"> + Add new field </v-btn>
                             </v-card-actions>
@@ -107,17 +108,19 @@
 <script setup>
 
 import { ref, defineProps } from 'vue'
-import AddQuestion from './addQuestion.vue';
+import AddQuestion from './AddQuestion.vue';
+
 
 const inputQuestionTypes = ['Text', 'Phone', 'Email', 'Date']
-const inputQuestions = ref([{ type: '' }])
+const inputQ = ref([{ type: '' }])
 const radioButton = ref([{ type: '' }])
 const dropDown = ref([{ type: '' }])
 const checkbox = ref([{ type: '' }])
 const conditional = ref([{ type: '' }])
 
 const addInputType = () => {
-    inputQuestions.value.push({ type: '' })
+    inputQ.value.push({ type: '' })
+    console.log(inputQ.value)
 }
 
 const addRadioButtons = () => {
