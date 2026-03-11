@@ -1,40 +1,40 @@
 
 
-
 <template>
-    <v-expansion-panels v-model="openedPanel">
-        <v-expansion-panel v-for="(question, index) in questions" :key="index" :title="'Question ' + (index + 1)">
-            <v-expansion-panel-text>
-                <v-container>
-                    <v-select v-model="question.type" :items="questionTypes" label="Question Type"></v-select>
-                    <v-text-field v-model="question.internalTitle" label="Internal title"></v-text-field>
-                    <v-text-field v-model="question.title" label="Enter title:"></v-text-field>
-                    <v-text-field v-model="question.text" label="Enter text:"></v-text-field>
-                    <v-text-field v-model="question.buttonText" label="Button Text"></v-text-field>
-                    <QuestionContent :question="question" />
-                </v-container>
-            </v-expansion-panel-text>
-        </v-expansion-panel>
+    <v-expansion-panels>
+        <QuestionForm v-for="(question, index) in store.questions" :question="question" :index="index" />
     </v-expansion-panels>
 </template>
 
+
+
 <script setup>
 
-import { ref, defineExpose } from 'vue'
-import QuestionContent from './QuestionContent.vue'
+import { defineExpose } from 'vue'
+import { useFormStore } from '@/stores/formStore'
+import QuestionForm from './QuestionForm.vue'
 
-const questionTypes = ['Input', 'Radio Button','Dropdown', 'Checkbox', 'Conditional']
+const store = useFormStore()
 
-const createNewQuestion = () => ({ type: '', internalTitle: '', title: '', text: '', buttonText: '' })
+const createNewQuestion = () => ({
+    type: '',
+    internalTitle: '',
+    title: '',
+    text: '',
+    buttonText: '',
+    inputFields: [{ type: '' }],
+    conditionals: []
+})
 
-const questions = ref([createNewQuestion()])
-const openedPanel = ref(0)
-
-const addQuestion = () => {
-    questions.value.push(createNewQuestion())
-    openedPanel.value = questions.value.length - 1
+if (store.questions.length === 0) {
+    store.questions.push(createNewQuestion())
 }
 
-defineExpose({ questions, addQuestion });
+const addQuestion = () => {
+    store.questions.push(createNewQuestion())
+}
+
+defineExpose({ addQuestion })
+
 
 </script>

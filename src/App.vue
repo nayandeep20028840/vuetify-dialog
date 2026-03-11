@@ -34,24 +34,19 @@
 <script setup>
 
 import { ref } from 'vue'
-import AddQuestion from './component/AddQuestion.vue'
+import { useFormStore } from '@/stores/formStore'
+import AddQuestion from './component/addQuestion.vue'
 
 const dialog = ref(false)
 const dialog2 = ref(false)
 const questionFormRef = ref(null)
 
+
+const store = useFormStore()
 const saveData = () => {
-    console.log("Component Ref:", questionFormRef.value);
-    const dataToSave = questionFormRef.value?.questions;
-    console.log("HEY THERE .........", questionFormRef.value.input5) // coming undefined 
-
-    if (dataToSave) {
-        const jsonOutput = JSON.stringify(dataToSave, 2);
-
-        console.log("Saved Data:", jsonOutput);
-
-        // dialog.value = false;
-    }
+    const jsonOutput = JSON.stringify(store.questions, null, 2);
+    console.log("Saved Data:", jsonOutput);
 }
+
 
 </script>
