@@ -48,5 +48,4 @@ const saveData = () => {
     console.log("Saved Data:", jsonOutput);
 }
 
-
 </script>

@@ -23,8 +23,12 @@ const createNewQuestion = () => ({
     text: '',
     buttonText: '',
     inputFields: [{ type: '' }],
+    radioButtons: [{ type: '' }],
+    checkbox: [{ type: '' }],
     conditionals: []
 })
+
+// [{ type: '' }]
 
 if (store.questions.length === 0) {
     store.questions.push(createNewQuestion())
